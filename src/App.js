@@ -8,10 +8,12 @@ import Alert from './Components/Alert';
 import {
   BrowserRouter as Router,
   Routes,
-  Route
+  Route,
+  useNavigate
 } from "react-router-dom";
 
 function App() {
+  // const navigate=useNavigate();
   const [mod,setMode]=useState('white');
   const [alert, setalert] = useState('null');
   const showAlert=(message,typ)=>{
@@ -62,15 +64,16 @@ function App() {
   <>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <Router>
-
+    
   <div>  <Navebar title="TextR" mode={mod} modetoggler={modeToggler} AboutUs="Contact US" modSuccess={handleSuccess}/> </div>
   
 <div className="container" >
 <Alert alrt={alert}/>
 <Routes>
-          <Route exact  path="/about" element={<About sty={mod}/>} />
-           
-          <Route  exact path="/" element={ <TextForm heading="Enter your text below to analyze"  showAlert={showAlert} mode={mod}/>}/>
+          <Route   path="/about" element={<About sty={mod}/>} />
+          <Route   path="/home" element={ <TextForm heading="Enter your text below to analyze"  showAlert={showAlert} mode={mod}/>}/>
+          <Route   path="/" element={ <TextForm heading="Enter your text below to analyze"  showAlert={showAlert} mode={mod}/>}/>
+
          </Routes>
        
       </div>
